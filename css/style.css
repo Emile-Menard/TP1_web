@@ -1,0 +1,82 @@
+html {
+      font-family: sans-serif;
+}
+
+.wrapper{
+      width: 800px;
+      border: solid 1px grey;
+}
+
+table {
+      border-spacing: 0px;
+}
+
+input {
+      width: 100%;
+      padding: 6px;
+      border: 0;
+      border-radius: 4px;
+}
+
+#Tableau-1 {
+      width: 800px;
+      height: 30px;
+
+}
+
+#Tableau-1 tr {
+      background-color: grey;
+     
+}
+
+#Tableau-1 tr td {
+      border: 0;
+      padding: 5px;
+      padding-left: 10px;
+      color: white;
+
+}
+
+#Tableau-2 {
+      width: 800px;
+      height: 30px;
+
+}
+
+
+
+#Tableau-2 tr {
+      background-color: lightgrey;
+}
+
+#Tableau-2 tr td {
+      border: 0;
+      padding: 10px;
+      color: white;
+}
+
+
+#DataTable {
+      width: 800px;
+}
+
+#DataTable tr {
+      height: 40px;
+}
+#DataTable tr td{
+      height: 40px;
+}
+
+#DataTable tr:nth-child(2n) {
+      background-color: lightcyan;
+}
+#DataTable tr td {
+      border: 0;
+      padding: 5px 10px;
+}
+
+.HiddenWrapper {
+      height: 300px;
+      widows: 100%;
+      overflow-y: scroll;
+}

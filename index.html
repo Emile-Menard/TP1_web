@@ -5,9 +5,39 @@
       <title>Travail pratique 1</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" media="screen" href="./css/style.css" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src=".js/base.js"></script>
 </head>
 <body>
-      test
+      <div class="wrapper">
+            <table id="Tableau-1">
+                  <tr>
+                        <td style="width: 25%">Nom</td>
+                        <td style="width: 25%">Téléphone</td>
+                        <td style="width: 35%">Courriel</td>
+                        <td style="width: 15%"></td>
+                  </tr>
+            </table>
+            <table id="Tableau-2" >
+                  <tr>
+                        <td style="width: 25%">
+                              <input type="text" name="nom" id="InsertName"></input>
+                        </td>
+                        <td style="width: 25%">
+                              <input type="phone" name="telephone" id="InsertTelephone"></input>
+                        </td style="width: 35%">
+                        <td>
+                              <input type="email" name="courriel" id="InsertEmail"></input>
+                        </td>
+                        <td style="width: 15%"></td>
+                  </tr>
+            </table>
+            <div class="HiddenWrapper">
+            <table id="DataTable">
+                        
+            </table>
+            </div>
+      </div>
+      <script src="./js/base.js"></script>
 </body>
 </html>
