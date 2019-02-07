@@ -17,6 +17,11 @@ function createCol(data) {
       return col;
 }
 
+$("#InsertShowButton" ).click(function(event) {
+      $("#Tableau-2").show();
+      $(this).hide();
+    });
+
 insertRow('Samuel', '00000000', 'sam@outlook.com');
 insertRow('Jean', '00000000', 'jean.pierre@outlook.com');
 insertRow('Audrey', '00000000', 'audrey.vigneux@outlook.com');
