@@ -1,3 +1,30 @@
+.table{
+      display: table;
+}
+
+.table-row{
+      display: table-row;
+}
+
+.table-cell{
+      display: table-cell;
+}
+
+#Tableau-Controls .table{
+      width: 800px;
+      height: 30px;
+}
+
+#Tableau-Controls .table-row {
+      background-color: lightgrey;
+}
+
+#Tableau-Controls .table-row .table-cell {
+      border: 0;
+      padding: 10px 20px 10px 10px;
+      color: white;
+}
+
 html {
       font-family: sans-serif;
 }
@@ -41,23 +68,7 @@ button:hover {
 
 }
 
-#Tableau-Controls {
-      width: 800px;
-      height: 30px;
 
-}
-
-
-
-#Tableau-Controls tr {
-      background-color: lightgrey;
-}
-
-#Tableau-Controls tr td {
-      border: 0;
-      padding: 10px;
-      color: white;
-}
 
 
 #DataTable {
