@@ -1,44 +1,49 @@
+//insertion de colonne dans la DataTable 
 function insertRow(nom, telephone, courriel) {
-      if(nom != "" && telephone != "" && courriel != "") {
-            var table = $('#DataTable');
-            
-            var row = document.createElement("div");
-            row.classList.add("table-row");
+  if(nom != "" && telephone != "" && courriel != "") {
+    var table = $('#DataTable');
+
+    var row = document.createElement("div");
+    row.classList.add("table-row");
 
 
-            for (var i=0; i < arguments.length; i++) {
-                  row.appendChild(createCol(arguments[i]));
-            }
-
-            var deleteButton = document.createElement("button");
-            deleteButton.classList.add('invisible');
-            
+    for (var i=0; i < arguments.length; i++) {
+      row.appendChild(createCol(arguments[i]));
+    }
 
 
-            var col = document.createElement("div");
-            col.classList.add("table-cell");
-            col.appendChild(deleteButton);
-            col.classList.add('foo');
 
-            row.addEventListener('mouseover', cellOverRow);
-            row.addEventListener('mouseout', cellLeaveRow);
-            row.appendChild(col);
+    row.addEventListener('mouseover', cellOverRow);
+    row.addEventListener('mouseout', cellLeaveRow);
+    row.appendChild(createCommandCol());
 
-            table.append(row);
-      }     
+    table.append(row);
+  }     
 }
-
+//creation de colonne de tableau qui contiendra le data passe en paramètre
 function createCol(data) {
-      var col = document.createElement("div");
-      col.innerHTML = data;
-      col.classList.add("table-cell");
-      return col;
+  var col = document.createElement("div");
+  col.innerHTML = data;
+  col.classList.add("table-cell");
+  return col;
+}
+
+//creation de colonne de tableau qui contiendra les commandes de suppression et de modification
+function createCommandCol(){
+  var deleteButton = document.createElement("button");
+  deleteButton.classList.add('invisible');
+
+  var col = document.createElement("div");
+  col.classList.add("table-cell");
+  col.appendChild(deleteButton);
+  col.classList.add('foo');
+  return col;
 }
 
 
-    
-    function cellOverRow(event){
-      let commandes =  event.target.parentElement.lastChild.childNodes;
+//permet le hover qui affiche les commandes de suppression et de modification
+function cellOverRow(event){
+  let commandes =  event.target.parentElement.lastChild.childNodes;
       //console.log(commandes);
       for (var i = commandes.length - 1; i >= 0; i--) {
         commandes[i].classList.remove('invisible');
@@ -47,71 +52,66 @@ function createCol(data) {
     }
     function cellLeaveRow(event){
       console.log(event.target.classList);
-       if(!event.target.classList.contains('foo')){
+      if(!event.target.classList.contains('foo')){
         let commandes =  event.target.parentElement.lastChild.childNodes;
        // console.log(event.target.tagName);
-        for (var i = commandes.length - 1; i >= 0; i--) {
-         
-            commandes[i].classList.add('invisible');
-         
-          
-        }
+       for (var i = commandes.length - 1; i >= 0; i--) {
+
+        commandes[i].classList.add('invisible');
+
+
       }
     }
-
-// $("#DataTable .table-row").hover(function(event){
-//   event.stopPropagation();
-//   $(this).find("#commandes").last().show();
-// }, function(event){
-//      event.stopPropagation();
-//      $(this).find("#commandes").last().hide();
-// });
-
-
-
+  }
 
 $("#InsertShowButton" ).click(function(event) {
-      $("#Tableau-Controls").show();
-      $(this).hide();
+  $("#Tableau-Controls").show();
+  $(this).hide();
 });
 
 $("#Form-Insert" ).submit(function( event ) {
-      var name = $('#InsertName').val();
-      var telephone = $('#InsertTelephone').val();
-      var email = $('#InsertEmail').val();
-      
-console.log(validationProvider.isValid())
+  var name = $('#InsertName').val();
+  var telephone = $('#InsertTelephone').val();
+  var email = $('#InsertEmail').val();
 
-      if(validationProvider.isValid())
-            insertRow(name, telephone, email);  
+  console.log(validationProvider.isValid())
+
+  if(validationProvider.isValid())
+    insertRow(name, telephone, email);  
 });
 
+
+
+
+//Validation
+
+
 function validate_email(){
-      let TBX_Email = document.getElementById("InsertEmail");
-      let emailRegex = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/;
+  let TBX_Email = document.getElementById("InsertEmail");
+  let emailRegex = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/;
 
-      if (!emailRegex.test(TBX_Email.value))
-          return "Adresse de courriel invalide";
+  if (!emailRegex.test(TBX_Email.value))
+    return "Adresse de courriel invalide";
 
-      return "";
-  }
-  function validate_name(){
-      let TBX_FirstName = document.getElementById("InsertName");
+  return "";
+}
+function validate_name(){
+  let TBX_FirstName = document.getElementById("InsertName");
 
-      if (TBX_FirstName.value === "")
-          return "Prénom manquant";
-      
-      return "";
-  }
+  if (TBX_FirstName.value === "")
+    return "Prénom manquant";
 
-  function validate_telephone(){
-      let TBX_Phone = document.getElementById("InsertTelephone");
+  return "";
+}
 
-      if (TBX_Phone.value === "")
-          return "Téléphone manquant";
-      
-      return "";
-  }
+function validate_telephone(){
+  let TBX_Phone = document.getElementById("InsertTelephone");
+
+  if (TBX_Phone.value === "")
+    return "Téléphone manquant";
+
+  return "";
+}
 
 
 
