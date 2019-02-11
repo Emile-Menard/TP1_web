@@ -22,14 +22,15 @@ $("#InsertShowButton" ).click(function(event) {
       $(this).hide();
 });
 
-$("#ControlAcceptButton" ).click(function(event) {
+$("#Form-Insert" ).submit(function( event ) {
       var name = $('#InsertName').val();
       var telephone = $('#InsertTelephone').val();
       var email = $('#InsertEmail').val();
       
+console.log(validationProvider.isValid())
+
       if(validationProvider.isValid())
-            insertRow(name, email, telephone);
-     
+            insertRow(name, email, telephone);  
 });
 
 function validate_email(){
