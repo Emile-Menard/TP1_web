@@ -10,7 +10,7 @@
    </head>
 <body>
       <div class="wrapper">
-            <table id="Tableau-1">
+            <table id="Tableau-Header">
                   <tr>
                         <td style="width: 25%">Nom</td>
                         <td style="width: 25%">Téléphone</td>
@@ -25,33 +25,36 @@
                         </td>
                   </tr>
             </table>
-            <table id="Tableau-2" style="display: none">
-                  <tr>
-                        <td style="width: 25%">
-                              <input type="text" name="nom" id="InsertName"></input>
-                        </td>
-                        <td style="width: 25%">
-                              <input type="phone" name="telephone" id="InsertTelephone"></input>
-                        </td style="width: 35%">
-                        <td>
-                              <input type="email" name="courriel" id="InsertEmail"></input>
-                        </td>
-                        <td style="width: 15%">
-                                    <button id="ControlAcceptShowButton">
-                                                <i class="fa fa-check" aria-hidden="true"></i>
-                                    </button>
-                                    <button id="ControlDenyShowButton">                      
-                                                <i class="fa fa-refresh" aria-hidden="true"></i>
-                                    </button>
-                        </td>
-                  </tr>
-            </table>
+            <form action="" id="Form-Insert">
+                  <table id="Tableau-Controls" style="display: none">
+                        <tr>
+                              <td style="width: 25%">
+                                    <input type="text" name="nom" id="InsertName"></input>
+                              </td>
+                              <td style="width: 25%">
+                                    <input type="phone" name="telephone" id="InsertTelephone"></input>
+                              </td style="width: 35%">
+                              <td>
+                                    <input type="email" name="courriel" id="InsertEmail"></input>
+                              </td>
+                              <td style="width: 15%">
+                                          <button id="ControlAcceptButton" type="submit">
+                                                      <i class="fa fa-check" aria-hidden="true"></i>
+                                          </button>
+                                          <button id="ControlDenyShowButton">                      
+                                                      <i class="fa fa-refresh" aria-hidden="true"></i>
+                                          </button>
+                              </td>
+                        </tr>
+                  </table>
+            </form>
             <div class="HiddenWrapper">
             <table id="DataTable">
                         
             </table>
             </div>
       </div>
+      <script src="./js/Validation.js"></script>
       <script src="./js/base.js"></script>
 </body>
 </html>

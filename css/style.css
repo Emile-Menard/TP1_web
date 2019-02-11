@@ -18,18 +18,22 @@ input {
       border-radius: 4px;
 }
 
-#Tableau-1 {
+button:hover {
+      cursor: pointer;
+}
+
+#Tableau-Header {
       width: 800px;
       height: 30px;
 
 }
 
-#Tableau-1 tr {
+#Tableau-Header tr {
       background-color: grey;
      
 }
 
-#Tableau-1 tr td {
+#Tableau-Header tr td {
       border: 0;
       padding: 5px;
       padding-left: 10px;
@@ -37,7 +41,7 @@ input {
 
 }
 
-#Tableau-2 {
+#Tableau-Controls {
       width: 800px;
       height: 30px;
 
@@ -45,11 +49,11 @@ input {
 
 
 
-#Tableau-2 tr {
+#Tableau-Controls tr {
       background-color: lightgrey;
 }
 
-#Tableau-2 tr td {
+#Tableau-Controls tr td {
       border: 0;
       padding: 10px;
       color: white;
