@@ -10,32 +10,32 @@
    </head>
 <body>
       <div class="wrapper">
-            <table id="Tableau-Header">
-                  <tr>
-                        <td style="width: 25%">Nom</td>
-                        <td style="width: 25%">Téléphone</td>
-                        <td style="width: 35%">Courriel</td>
-                        <td style="width: 15%">
+            <div id="Tableau-Header" class="table">
+                  <div class="table-row">
+                        <div style="width: 25%" class="table-cell">Nom</div>
+                        <div style="width: 25%" class="table-cell">Téléphone</div>
+                        <div style="width: 35%" class="table-cell">Courriel</div>
+                        <div style="width: 15%" class="table-cell">
                               <div class="MarginWrapper">
                                           <button id="InsertShowButton">
                                                       <i class="fa fa-plus" aria-hidden="true"></i>
                                           </button>
                               </div>
-                             
-                        </td>
-                  </tr>
-            </table>
+                        </div>
+                  </div>
+            </div>
             <form action="javascript:void(0);" id="Form-Insert">
                   <div id="Tableau-Controls" style="display: none" class="table">
                         <div class="table-row">
                               <div style="width: 25%" class="table-cell">
-                                    <input type="text" name="nom" id="InsertName"></input>
+                                    <input type="text" name="nom" id="InsertName" placeholder="Nom"></input>
                               </div>
                               <div style="width: 25%" class="table-cell">
-                                    <input type="phone" name="telephone" id="InsertTelephone"></input>
+                                    <input type="phone" name="telephone" id="InsertTelephone" placeholder="Téléphone"></input>
                               </div style="width: 35%" class="table-cell">
                               <div  class="table-cell">
-                                    <input type="email" name="courriel" id="InsertEmail"></input>
+                                    <input type="email" name="courriel" id="InsertEmail" placeholder="Courriel"></input>
+
                               </div>
                               <div style="width: 15%" class="table-cell">
                                           <button id="ControlAcceptButton" type="submit">
@@ -49,9 +49,9 @@
                   </div>
             </form>
             <div class="HiddenWrapper">
-            <table id="DataTable">
+            <div id="DataTable" class="table">
                         
-            </table>
+            </div>
             </div>
       </div>
       <script src="./js/Validation.js"></script>

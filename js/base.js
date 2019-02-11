@@ -2,20 +2,27 @@ function insertRow(nom, telephone, courriel) {
       if(nom != "" && telephone != "" && courriel != "") {
             var table = $('#DataTable');
             
-            var row = document.createElement("tr");
+            var row = document.createElement("div");
+            row.classList.add("table-row");
             for (var i=0; i < arguments.length; i++) {
                   row.appendChild(createCol(arguments[i]));
             }
-            row.appendChild(createCol(''));
+            //var deleteButton 
+            row.appendChild('');
             table.append(row);
       }     
 }
 
 function createCol(data) {
-      var col = document.createElement("td");
+      var col = document.createElement("div");
       col.innerHTML = data;
+      col.classList.add("table-cell");
       return col;
 }
+
+$("#DataTable .table-row").hover(function(event){
+
+});
 
 $("#InsertShowButton" ).click(function(event) {
       $("#Tableau-Controls").show();

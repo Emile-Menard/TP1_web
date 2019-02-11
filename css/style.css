@@ -10,7 +10,33 @@
       display: table-cell;
 }
 
-#Tableau-Controls .table{
+.invisible{
+      display: none;
+}
+
+
+#Tableau-Header {
+      width: 800px;
+      height: 30px;
+
+}
+
+#Tableau-Header .table-row {
+      background-color: grey;
+     
+}
+
+#Tableau-Header .table-row .table-cell {
+      border: 0;
+      padding: 5px;
+      padding-left: 10px;
+      color: white;
+
+}
+
+
+
+#Tableau-Controls{
       width: 800px;
       height: 30px;
 }
@@ -24,6 +50,10 @@
       padding: 10px 20px 10px 10px;
       color: white;
 }
+
+
+
+
 
 html {
       font-family: sans-serif;
@@ -49,55 +79,34 @@ button:hover {
       cursor: pointer;
 }
 
-#Tableau-Header {
-      width: 800px;
-      height: 30px;
-
-}
-
-#Tableau-Header tr {
-      background-color: grey;
-     
-}
-
-#Tableau-Header tr td {
-      border: 0;
-      padding: 5px;
-      padding-left: 10px;
-      color: white;
-
-}
-
-
-
 
 #DataTable {
       width: 800px;
 }
 
-#DataTable tr {
+#DataTable .table-row {
       height: 40px;
 }
-#DataTable tr td{
+#DataTable .table-row .table-cell{
       height: 40px;
 }
 
-#DataTable tr:nth-child(2n) {
+#DataTable .table-row:nth-child(2n) {
       background-color: lightcyan;
 }
-#DataTable tr td:nth-child(1), #DataTable tr td:nth-child(2) {
+#DataTable .table-row .table-cell:nth-child(1), #DataTable .table-row .table-cell:nth-child(2) {
       width: 25%;
 }
 
-#DataTable tr td:nth-child(3) {
+#DataTable .table-row .table-cell:nth-child(3) {
       width: 35%;
 }
-#DataTable tr td:nth-child(4) {
+#DataTable .table-row .table-cell:nth-child(4) {
       width: 15%;
 }
 
 
-#DataTable tr td {
+#DataTable .table-row .table-cell {
       border: 0;
       padding: 5px 10px;
 }
@@ -108,7 +117,7 @@ button:hover {
       overflow-y: scroll;
 }
 
-#DataTable tr:hover {
+#DataTable .table-row:hover {
       background-color: darkgrey;
 }
 
