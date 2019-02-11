@@ -30,7 +30,7 @@ $("#Form-Insert" ).submit(function( event ) {
 console.log(validationProvider.isValid())
 
       if(validationProvider.isValid())
-            insertRow(name, email, telephone);  
+            insertRow(name, telephone, email);  
 });
 
 function validate_email(){
