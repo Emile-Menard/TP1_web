@@ -11,8 +11,6 @@ function insertRow(nom, telephone, courriel) {
       row.appendChild(createCol(arguments[i]));
     }
 
-
-
     row.addEventListener('mouseover', cellOverRow);
     row.addEventListener('mouseout', cellLeaveRow);
     row.appendChild(createCommandCol());
@@ -44,25 +42,24 @@ function createCommandCol(){
 //permet le hover qui affiche les commandes de suppression et de modification
 function cellOverRow(event){
   let commandes =  event.target.parentElement.lastChild.childNodes;
-      //console.log(commandes);
-      for (var i = commandes.length - 1; i >= 0; i--) {
-        commandes[i].classList.remove('invisible');
-      }
+  //console.log(commandes);
+  for (var i = commandes.length - 1; i >= 0; i--) {
+    commandes[i].classList.remove('invisible');
+  }
       
-    }
-    function cellLeaveRow(event){
-      console.log(event.target.classList);
-      if(!event.target.classList.contains('foo')){
-        let commandes =  event.target.parentElement.lastChild.childNodes;
-       // console.log(event.target.tagName);
-       for (var i = commandes.length - 1; i >= 0; i--) {
-
-        commandes[i].classList.add('invisible');
-
-
-      }
+}
+function cellLeaveRow(event){
+  //console.log(event.target.classList);
+  if(!event.target.classList.contains('foo')){
+    let commandes =  event.target.parentElement.lastChild.childNodes;
+    // console.log(event.target.tagName);
+    for (var i = commandes.length - 1; i >= 0; i--) {
+      commandes[i].classList.add('invisible');
     }
   }
+}
+
+
 
 $("#InsertShowButton" ).click(function(event) {
   $("#Tableau-Controls").show();
@@ -112,8 +109,6 @@ function validate_telephone(){
 
   return "";
 }
-
-
 
 
 
