@@ -18,7 +18,7 @@ function insertRow(nom, telephone, courriel) {
             var col = document.createElement("div");
             col.classList.add("table-cell");
             col.appendChild(deleteButton);
-            col.classList.add('foo');
+            deleteButton.classList.add('foo');
 
             row.addEventListener('mouseover', cellOverRow);
             row.addEventListener('mouseout', cellLeaveRow);
@@ -128,9 +128,10 @@ $('#DataTable .table-row').on('mouseover',  function(e) {
   console.log($(this).find('.foo').show());
 });
 
-$('#DataTable .table-row').on('mouseleave',  function(e) {
+$('#DataTable .table-row').on('mouseout',  function(e) {
   console.log($(this).find('.foo').hide());
 });
+
 
 
 
