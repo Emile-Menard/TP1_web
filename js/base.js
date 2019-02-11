@@ -4,11 +4,26 @@ function insertRow(nom, telephone, courriel) {
             
             var row = document.createElement("div");
             row.classList.add("table-row");
+
+
             for (var i=0; i < arguments.length; i++) {
                   row.appendChild(createCol(arguments[i]));
             }
-            //var deleteButton 
-            row.appendChild('');
+
+            var deleteButton = document.createElement("button");
+            deleteButton.classList.add('invisible');
+            
+
+
+            var col = document.createElement("div");
+            col.classList.add("table-cell");
+            col.appendChild(deleteButton);
+            col.classList.add('foo');
+
+            row.addEventListener('mouseover', cellOverRow);
+            row.addEventListener('mouseout', cellLeaveRow);
+            row.appendChild(col);
+
             table.append(row);
       }     
 }
@@ -20,9 +35,40 @@ function createCol(data) {
       return col;
 }
 
-$("#DataTable .table-row").hover(function(event){
 
-});
+    
+    function cellOverRow(event){
+      let commandes =  event.target.parentElement.lastChild.childNodes;
+      //console.log(commandes);
+      for (var i = commandes.length - 1; i >= 0; i--) {
+        commandes[i].classList.remove('invisible');
+      }
+      
+    }
+    function cellLeaveRow(event){
+      console.log(event.target.classList);
+       if(!event.target.classList.contains('foo')){
+        let commandes =  event.target.parentElement.lastChild.childNodes;
+       // console.log(event.target.tagName);
+        for (var i = commandes.length - 1; i >= 0; i--) {
+         
+            commandes[i].classList.add('invisible');
+         
+          
+        }
+      }
+    }
+
+// $("#DataTable .table-row").hover(function(event){
+//   event.stopPropagation();
+//   $(this).find("#commandes").last().show();
+// }, function(event){
+//      event.stopPropagation();
+//      $(this).find("#commandes").last().hide();
+// });
+
+
+
 
 $("#InsertShowButton" ).click(function(event) {
       $("#Tableau-Controls").show();
@@ -81,3 +127,6 @@ let validationProvider = new ValidationProvider("Form-Insert");
 validationProvider.addControl("InsertName", validate_name);
 validationProvider.addControl("InsertEmail", validate_email);
 validationProvider.addControl("InsertTelephone", validate_telephone);
+
+
+
