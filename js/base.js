@@ -46,7 +46,6 @@ function createCol(data) {
       
     }
     function cellLeaveRow(event){
-      console.log(event.target.classList);
        if(!event.target.classList.contains('foo')){
         let commandes =  event.target.parentElement.lastChild.childNodes;
        // console.log(event.target.tagName);
@@ -80,7 +79,6 @@ $("#Form-Insert" ).submit(function( event ) {
       var telephone = $('#InsertTelephone').val();
       var email = $('#InsertEmail').val();
       
-console.log(validationProvider.isValid())
 
       if(validationProvider.isValid())
             insertRow(name, telephone, email);  
@@ -115,8 +113,6 @@ function validate_email(){
 
 
 
-
-
 insertRow('Samuel', '00000000', 'sam@outlook.com');
 insertRow('Jean', '00000000', 'jean.pierre@outlook.com');
 insertRow('Audrey', '00000000', 'audrey.vigneux@outlook.com');
@@ -127,6 +123,15 @@ let validationProvider = new ValidationProvider("Form-Insert");
 validationProvider.addControl("InsertName", validate_name);
 validationProvider.addControl("InsertEmail", validate_email);
 validationProvider.addControl("InsertTelephone", validate_telephone);
+
+$('#DataTable .table-row').on('mouseover',  function(e) {
+  console.log($(this).find('.foo').show());
+});
+
+$('#DataTable .table-row').on('mouseleave',  function(e) {
+  console.log($(this).find('.foo').hide());
+});
+
 
 
 
