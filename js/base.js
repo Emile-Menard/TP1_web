@@ -195,8 +195,11 @@ function validate_email(){
   function validate_telephone(){
       let TBX_Phone = document.getElementById("InsertTelephone");
 
-      if (TBX_Phone.value === "")
+      if (TBX_Phone.value === "" )
           return "Téléphone manquant";
+      if (!(TBX_Phone.value.length === 10 && $.isNumeric(TBX_Phone.value) && TBX_Phone.value > 0)) {
+        return "Téléphone de format invalide";
+      }
       
       return "";
   }
