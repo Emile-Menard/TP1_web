@@ -12,21 +12,29 @@ function insertRow(nom, telephone, courriel) {
 
             var deleteButton = document.createElement("button");
             deleteButton.classList.add('invisible');
+            var EditButton = document.createElement("button");
             
+            EditButton.classList.add('invisible');
+          
 
 
             var col = document.createElement("div");
             col.classList.add("table-cell");
+            col.appendChild(EditButton);
             col.appendChild(deleteButton);
+            EditButton.innerHTML = '<i class="fa fa-pencil"></i>';
+  
+            EditButton.classList.add('foo');
             deleteButton.classList.add('foo');
-
+            deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
             $(row).on('mouseover',  function(e) {
-              $(this).find('.foo').show();
+              $(this).find('button').show();
             });
             
             $(row).on('mouseout',  function(e) {
-             $(this).find('.foo').hide();
+             $(this).find('button').hide();
             });
+            
             
             row.appendChild(col);
 
