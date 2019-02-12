@@ -11,7 +11,7 @@ function insertRow(nom, telephone, courriel) {
             }
 
             var deleteButton = document.createElement("button");
-            deleteButton.classList.add('invisible');
+            
             var EditButton = document.createElement("button");
             
             EditButton.classList.add('invisible');
@@ -28,9 +28,52 @@ function insertRow(nom, telephone, courriel) {
             deleteButton.classList.add('foo');
             deleteButton.style.marginLeft= '5px';
             deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+
             $(row).on('mouseover',  function(e) {
               $(this).find('button').show();
             });
+
+
+
+
+
+
+            let overlay_ = document.getElementById("Overlay");
+            let back = document.getElementById("Wrapper");
+            let popup_ = document.getElementById("Popup");
+            let rowToDelete;
+
+            $(deleteButton).on('click',  function(e) {
+              rowToDelete = $(this).parent().parent();
+              overlay_.classList.add('overlay');
+              popup_.classList.remove('invisible');
+              back.classList.add('disabled');
+             
+            });
+
+            let delAccept = document.getElementById("DeleteAcceptButton");
+
+             $(delAccept).on('click',  function(e) {
+                rowToDelete.remove();
+                overlay_.classList.remove('overlay');
+                popup_.classList.add('invisible');
+                back.classList.remove('disabled');             
+             });
+
+             let delDeny = document.getElementById("DeleteDenyButton");
+
+             $(delDeny).on('click',  function(e) {
+                
+                overlay_.classList.remove('overlay');
+                popup_.classList.add('invisible');
+                back.classList.remove('disabled');             
+              });
+
+
+
+
+
+
             
             $(row).on('mouseout',  function(e) {
              $(this).find('button').hide();
