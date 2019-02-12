@@ -26,6 +26,7 @@ function insertRow(nom, telephone, courriel) {
   
             EditButton.classList.add('foo');
             deleteButton.classList.add('foo');
+            deleteButton.style.marginLeft= '5px';
             deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
             $(row).on('mouseover',  function(e) {
               $(this).find('button').show();
