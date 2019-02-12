@@ -9,6 +9,8 @@
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
    </head>
 <body>
+      <i class="fa fa-user" style="font-size: 50px; display: inline"></i>
+      <h2 style="display: inline">Gestionnaire de contact</h2>
       <div class="wrapper" >
             <div id="Tableau-Header" class="table">
                   <div class="table-row">
@@ -27,21 +29,21 @@
             <form action="javascript:void(0);" id="Form-Insert">
                   <div id="Tableau-Controls" style="display: none" class="table">
                         <div class="table-row">
-                              <div style="width: 25%" class="table-cell">
-                                    <input type="text" name="nom" id="InsertName" placeholder="Nom"></input>
+                              <div style="width: 25%;" class="table-cell">
+                                    <input type="text" name="nom" id="InsertName" placeholder="Nom" style="margin-bottom: 10px;"></input>
                               </div>
-                              <div style="width: 25%" class="table-cell">
-                                    <input type="phone" name="telephone" id="InsertTelephone" placeholder="Téléphone"></input>
-                              </div style="width: 35%" class="table-cell">
-                              <div  class="table-cell">
-                                    <input type="email" name="courriel" id="InsertEmail" placeholder="Courriel"></input>
+                              <div style="width: 25%;" class="table-cell">
+                                    <input type="phone" name="telephone" id="InsertTelephone" placeholder="Téléphone" style="margin-bottom: 10px;"></input>
+                              </div class="table-cell">
+                              <div  class="table-cell" style="width: 35%;" >
+                                    <input type="email" name="courriel" id="InsertEmail" placeholder="Courriel" style="margin-bottom: 10px;"></input>
 
                               </div>
                               <div style="width: 15%" class="table-cell">
                                           <button id="ControlAcceptButton" type="submit">
                                                       <i class="fa fa-check" aria-hidden="true"></i>
                                           </button>
-                                          <button id="ControlDenyShowButton">                      
+                                          <button id="ControlDenyButton" type=button>                      
                                                       <i class="fa fa-refresh" aria-hidden="true"></i>
                                           </button>
                               </div>

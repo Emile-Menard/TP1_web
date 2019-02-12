@@ -1,3 +1,5 @@
+var updating = { isUpdating: false, row: null};
+
 function insertRow(nom, telephone, courriel) {
       if(nom != "" && telephone != "" && courriel != "") {
             var table = $('#DataTable');
@@ -28,6 +30,8 @@ function insertRow(nom, telephone, courriel) {
             deleteButton.classList.add('foo');
             deleteButton.style.marginLeft= '5px';
             deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+            
+            
             $(row).on('mouseover',  function(e) {
               $(this).find('button').show();
             });
@@ -35,12 +39,41 @@ function insertRow(nom, telephone, courriel) {
             $(row).on('mouseout',  function(e) {
              $(this).find('button').hide();
             });
+
+            $(EditButton).on('click',  function(e) {
+             
+             let row = $(this).parent().parent();
+              
+             updateData(row);
             
-            
+            });
             row.appendChild(col);
 
             table.append(row);
       }     
+}
+
+function updateData(row) {
+ 
+  let nom = row.children()[0].innerHTML;
+  let telephone = row.children()[1].innerHTML;
+  let courriel = row.children()[2].innerHTML;
+  
+  let controlTab =  $("#Tableau-Controls");
+  if(!controlTab.is(":visible")){
+    controlTab.show();
+    $("#InsertShowButton" ).hide();
+  
+  }
+
+  validationProvider.reset();
+
+  $('#InsertName').val(nom);
+  $('#InsertTelephone').val(telephone);
+  $('#InsertEmail').val(courriel);
+
+  updating = {isUpdating: true, row: row};
+
 }
 
 function createCol(data) {
@@ -50,53 +83,55 @@ function createCol(data) {
       return col;
 }
 
-
-    
-/*     function cellOverRow(event){
-      let commandes =  event.target.parentElement.lastChild.childNodes;
-      //console.log(commandes);
-      for (var i = commandes.length - 1; i >= 0; i--) {
-        commandes[i].classList.remove('invisible');
-      }
-      
-    }
-    function cellLeaveRow(event){
-       if(!event.target.classList.contains('foo')){
-        let commandes =  event.target.parentElement.lastChild.childNodes;
-       // console.log(event.target.tagName);
-        for (var i = commandes.length - 1; i >= 0; i--) {
-         
-            commandes[i].classList.add('invisible');
-         
-          
-        }
-      }
-    } */
-
-// $("#DataTable .table-row").hover(function(event){
-//   event.stopPropagation();
-//   $(this).find("#commandes").last().show();
-// }, function(event){
-//      event.stopPropagation();
-//      $(this).find("#commandes").last().hide();
-// });
-
-
-
-
-$("#InsertShowButton" ).click(function(event) {
+$("#InsertShowButton").click(function(event) {
       $("#Tableau-Controls").show();
       $(this).hide();
+      validationProvider.reset();
 });
 
-$("#Form-Insert" ).submit(function( event ) {
+$("#ControlDenyButton").click(function(event) {
+      clearSoft();
+});
+
+function clearControls() {
+      $('#InsertName').val('');
+      $('#InsertTelephone').val('');
+      $('#InsertEmail').val('');
+      updating = {isUpdating: false, row: null};
+
+      $("#Tableau-Controls").hide();
+      $("#InsertShowButton" ).show();
+     
+}
+
+function clearSoft() {
+      $('#InsertName').val('');
+      $('#InsertTelephone').val('');
+      $('#InsertEmail').val('');
+      updating = {isUpdating: false, row: null};
+     
+}
+
+
+$("#Form-Insert").submit(function( event ) {
       var name = $('#InsertName').val();
       var telephone = $('#InsertTelephone').val();
       var email = $('#InsertEmail').val();
       
-
-      if(validationProvider.isValid())
-            insertRow(name, telephone, email);  
+      if(validationProvider.isValid()) {
+        if(updating.isUpdating){
+         
+         $(updating.row).children()[0].innerHTML = name;
+         $(updating.row).children()[1].innerHTML = telephone;
+         $(updating.row).children()[2].innerHTML = email;
+         clearControls();
+        }else{
+          insertRow(name, telephone, email); 
+          clearControls();
+        }
+        
+      }
+            
 });
 
 function validate_email(){
