@@ -20,8 +20,14 @@ function insertRow(nom, telephone, courriel) {
             col.appendChild(deleteButton);
             deleteButton.classList.add('foo');
 
-            row.addEventListener('mouseover', cellOverRow);
-            row.addEventListener('mouseout', cellLeaveRow);
+            $(row).on('mouseover',  function(e) {
+              $(this).find('.foo').show();
+            });
+            
+            $(row).on('mouseout',  function(e) {
+             $(this).find('.foo').hide();
+            });
+            
             row.appendChild(col);
 
             table.append(row);
@@ -37,7 +43,7 @@ function createCol(data) {
 
 
     
-    function cellOverRow(event){
+/*     function cellOverRow(event){
       let commandes =  event.target.parentElement.lastChild.childNodes;
       //console.log(commandes);
       for (var i = commandes.length - 1; i >= 0; i--) {
@@ -56,7 +62,7 @@ function createCol(data) {
           
         }
       }
-    }
+    } */
 
 // $("#DataTable .table-row").hover(function(event){
 //   event.stopPropagation();
@@ -124,13 +130,6 @@ validationProvider.addControl("InsertName", validate_name);
 validationProvider.addControl("InsertEmail", validate_email);
 validationProvider.addControl("InsertTelephone", validate_telephone);
 
-$('#DataTable .table-row').on('mouseover',  function(e) {
-  console.log($(this).find('.foo').show());
-});
-
-$('#DataTable .table-row').on('mouseout',  function(e) {
-  console.log($(this).find('.foo').hide());
-});
 
 
 

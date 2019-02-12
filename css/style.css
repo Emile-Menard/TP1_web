@@ -88,7 +88,7 @@ button:hover {
 }
 
 #DataTable .table-row {
-      height: 40px;
+      max-height: 40px;
 }
 #DataTable .table-row .table-cell{
       height: 40px;
