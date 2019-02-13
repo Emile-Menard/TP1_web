@@ -1,64 +1,28 @@
-.overlay{
-      display: none;
-      opacity: 0.5;
-      background-color: grey;
-      position: fixed;
-      left: 0px;
-      top: 0px;
+html {
+      font-family: sans-serif;
+}
+
+table {
+      border-spacing: 0px;
+}
+
+input {
       width: 100%;
-      height: 100%;
-      z-index: 18;
+      padding: 6px;
+      border: 0;
+      border-radius: 4px;
 }
 
-.show{
-      display: block;
+button{
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;    
 }
 
-.popup{
-      width: 25%;
-      height: 15%;
-      min-width: 200px;
-      min-height: 100px;
-      top: 37.5%;
-      left: 37.5%;
-      
-      margin-left: -(width/2);
-      margin-right: -(height/2);
-      position: absolute;
-      z-index: 20;
-      background-color: lightblue;
-      text-align: center;
-      padding: 20px;
-}
-.btn{
-      width: 50px;
-      margin: 20px;
+button:hover {
+      cursor: pointer;
 }
 
-.disabled{
-      pointer-events: none;
-       user-select: none;
-}
-
-.table{
-      display: table;
-}
-
-.table-row{
-      display: table-row;
-}
-
-.table-cell{
-      display: table-cell;
-}
-
-.invisible{
-      display: none;
-}
-
-.foo{
-      /*Utile lors de la */
-}
 
 #Tableau-Header {
       width: 800px;
@@ -79,8 +43,6 @@
 
 }
 
-
-
 #Tableau-Controls{
       width: 800px;
       height: 30px;
@@ -95,35 +57,6 @@
       padding: 10px 20px 10px 10px;
       color: white;
 }
-
-
-
-
-
-html {
-      font-family: sans-serif;
-}
-
-.wrapper{
-      width: 800px;
-      border: solid 1px grey;
-}
-
-table {
-      border-spacing: 0px;
-}
-
-input {
-      width: 100%;
-      padding: 6px;
-      border: 0;
-      border-radius: 4px;
-}
-
-button:hover {
-      cursor: pointer;
-}
-
 
 #DataTable {
       width: 800px;
@@ -156,21 +89,78 @@ button:hover {
       padding: 5px 10px;
 }
 
-.HiddenWrapper {
-      height: 300px;
-      widows: 100%;
-      overflow-y: scroll;
-}
-
 #DataTable .table-row:hover {
       background-color: cyan;
 }
 
-button{
-      width: 24px;
-      height: 24px;
-      border-radius: 4px;
-     
+.overlay{
+      display: none;
+      opacity: 0.5;
+      background-color: grey;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 18;
+}
+
+.popup{
+      width: 25%;
+      height: 15%;
+      min-width: 200px;
+      min-height: 100px;
+      top: 37.5%;
+      left: 37.5%;
+      
+      margin-left: -(width/2);
+      margin-right: -(height/2);
+      position: absolute;
+      z-index: 20;
+      background-color: lightblue;
+      text-align: center;
+      padding: 20px;
+}
+
+.btn{
+      width: 50px;
+      margin: 20px;
+}
+
+.table{
+      display: table;
+}
+
+.table-row{
+      display: table-row;
+}
+
+.table-cell{
+      display: table-cell;
+}
+
+.disabled{
+      pointer-events: none;
+       user-select: none;
+}
+
+.show{
+      display: block;
+}
+
+.invisible{
+      display: none;
+}
+
+.wrapper{
+      width: 800px;
+      border: solid 1px grey;
+}
+
+.HiddenWrapper {
+      height: 300px;
+      widows: 100%;
+      overflow-y: scroll;
 }
 
 .MarginWrapper {
