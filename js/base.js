@@ -46,7 +46,7 @@ function insertRow(nom, telephone, courriel) {
             $(deleteButton).on('click',  function(e) {
               currentRow = $(this).parent().parent();
               console.log($(this))
-              overlay_.classList.add('overlay');
+              overlay_.classList.add('show');
               popup_.classList.remove('invisible');
               back.classList.add('disabled');
              
@@ -56,7 +56,7 @@ function insertRow(nom, telephone, courriel) {
 
              $(delAccept).on('click',  function(e) {
                 currentRow.remove();
-                overlay_.classList.remove('overlay');
+                overlay_.classList.remove('show');
                 popup_.classList.add('invisible');
                 back.classList.remove('disabled');             
              });
@@ -65,7 +65,7 @@ function insertRow(nom, telephone, courriel) {
 
              $(delDeny).on('click',  function(e) {
                 
-                overlay_.classList.remove('overlay');
+                overlay_.classList.remove('show');
                 popup_.classList.add('invisible');
                 back.classList.remove('disabled');             
               });

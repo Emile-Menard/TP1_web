@@ -9,65 +9,58 @@
       <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
    </head>
 <body>
-       <div id="Overlay">
-                  <i class="fa fa-user" style="font-size: 50px; display: inline"></i>
-                  <h2 style="display: inline">Gestionnaire de contact</h2>
-                
-            <div id="Wrapper" class="wrapper">
-                  <div id="Tableau-Header" class="table">
+      <i class="fa fa-user" style="font-size: 50px; display: inline"></i>
+      <h2 style="display: inline">Gestionnaire de contact</h2>
+      <div id="Wrapper" class="wrapper">
+            <div id="Tableau-Header" class="table">
+                  <div class="table-row">
+                        <div style="width: 25%" class="table-cell">Nom</div>
+                        <div style="width: 25%" class="table-cell">Téléphone</div>
+                        <div style="width: 35%" class="table-cell">Courriel</div>
+                        <div style="width: 15%" class="table-cell">
+                              <div class="MarginWrapper">
+                                          <button id="InsertShowButton">
+                                                      <i class="fa fa-plus" aria-hidden="true"></i>
+                                          </button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <form action="javascript:void(0);" id="Form-Insert">
+                  <div id="Tableau-Controls" style="display: none" class="table">
                         <div class="table-row">
-                              <div style="width: 25%" class="table-cell">Nom</div>
-                              <div style="width: 25%" class="table-cell">Téléphone</div>
-                              <div style="width: 35%" class="table-cell">Courriel</div>
+                              <div style="width: 25%" class="table-cell">
+                                    <input type="text" name="nom" id="InsertName" placeholder="Nom"></input>
+                              </div>
+                              <div style="width: 25%" class="table-cell">
+                                    <input type="phone" name="telephone" id="InsertTelephone" placeholder="Téléphone"></input>
+                              </div style="width: 35%" class="table-cell">
+                              <div  class="table-cell">
+                                    <input type="email" name="courriel" id="InsertEmail" placeholder="Courriel"></input>
+
+                              </div>
                               <div style="width: 15%" class="table-cell">
-                                    <div class="MarginWrapper">
-                                                <button id="InsertShowButton">
-                                                            <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                    </div>
+                                          <button id="ControlAcceptButton" type="submit">
+                                                      <i class="fa fa-check" aria-hidden="true"></i>
+                                          </button>
+                                          <button id="ControlDenyButton">                      
+                                                      <i class="fa fa-refresh" aria-hidden="true"></i>
+                                          </button>
                               </div>
                         </div>
                   </div>
-                  <form action="javascript:void(0);" id="Form-Insert">
-                        <div id="Tableau-Controls" style="display: none" class="table">
-                              <div class="table-row">
-                                    <div style="width: 25%" class="table-cell">
-                                          <input type="text" name="nom" id="InsertName" placeholder="Nom"></input>
-                                    </div>
-                                    <div style="width: 25%" class="table-cell">
-                                          <input type="phone" name="telephone" id="InsertTelephone" placeholder="Téléphone"></input>
-                                    </div style="width: 35%" class="table-cell">
-                                    <div  class="table-cell">
-                                          <input type="email" name="courriel" id="InsertEmail" placeholder="Courriel"></input>
-
-                                    </div>
-                                    <div style="width: 15%" class="table-cell">
-                                                <button id="ControlAcceptButton" type="submit">
-                                                            <i class="fa fa-check" aria-hidden="true"></i>
-                                                </button>
-                                                <button id="ControlDenyButton">                      
-                                                            <i class="fa fa-refresh" aria-hidden="true"></i>
-                                                </button>
-                                    </div>
-                              </div>
-                        </div>
-                  </form>
-                  <div class="HiddenWrapper">
+            </form>
+            <div class="HiddenWrapper">
                   <div id="DataTable" class="table">
-                              
-                  </div>
-                  
-                  
+                  </div>      
             </div>
-
-            </div>
-           
-      </div>
+            
+            
+      </div>     
+      <div id="Overlay" class="overlay"></div>
       <div id="Popup" class="popup invisible">
             Êtes-vous certains de vouloir effacer ce contact?
-            <button id="DeleteAcceptButton" class="btn">
-                  Oui
-            </button>
+            <button id="DeleteAcceptButton" class="btn">Oui</button>
             <button id="DeleteDenyButton" class="btn">                      
                   Non
             </button>
