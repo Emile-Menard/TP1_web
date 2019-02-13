@@ -19,9 +19,9 @@
                         <div style="width: 35%" class="table-cell">Courriel</div>
                         <div style="width: 15%" class="table-cell">
                               <div class="MarginWrapper">
-                                          <button id="InsertShowButton">
-                                                      <i class="fa fa-plus" aria-hidden="true"></i>
-                                          </button>
+                                    <button id="InsertShowButton">
+                                          <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </button>
                               </div>
                         </div>
                   </div>
@@ -33,37 +33,35 @@
                                     <input type="text" name="nom" id="InsertName" placeholder="Nom"></input>
                               </div>
                               <div style="width: 25%" class="table-cell">
-                                    <input type="phone" name="telephone" id="InsertTelephone" placeholder="Téléphone"></input>
+                                          <input type="phone" name="telephone" id="InsertTelephone" placeholder="Téléphone"></input>
                               </div style="width: 35%" class="table-cell">
                               <div  class="table-cell">
                                     <input type="email" name="courriel" id="InsertEmail" placeholder="Courriel"></input>
-
                               </div>
                               <div style="width: 15%" class="table-cell">
-                                          <button id="ControlAcceptButton" type="submit">
-                                                      <i class="fa fa-check" aria-hidden="true"></i>
-                                          </button>
-                                          <button id="ControlDenyButton">                      
-                                                      <i class="fa fa-refresh" aria-hidden="true"></i>
-                                          </button>
+                                    <button id="ControlAcceptButton" type="submit">
+                                          <i class="fa fa-check" aria-hidden="true"></i>
+                                    </button>
+                                    <button id="ControlDenyButton">                      
+                                          <i class="fa fa-refresh" aria-hidden="true"></i>
+                                    </button>
                               </div>
                         </div>
                   </div>
             </form>
+
             <div class="HiddenWrapper">
-                  <div id="DataTable" class="table">
-                  </div>      
+                  <div id="DataTable" class="table"></div>      
             </div>
             
-            
       </div>     
+      
       <div id="Overlay" class="overlay"></div>
+      
       <div id="Popup" class="popup invisible">
             Êtes-vous certains de vouloir effacer ce contact?
             <button id="DeleteAcceptButton" class="btn">Oui</button>
-            <button id="DeleteDenyButton" class="btn">                      
-                  Non
-            </button>
+            <button id="DeleteDenyButton" class="btn">Non</button>
       </div> 
 
       <script src="./js/Validation.js"></script>
