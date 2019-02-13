@@ -132,6 +132,10 @@ $("#InsertShowButton").click(function(event) {
 $("#ControlDenyButton").click(function(event) {
       clearSoft();
 });
+$("#ControlCancelButton").click(function(event) {
+     clearControls();
+});
+
 
 function clearControls() {
       $('#InsertName').val('');
@@ -149,6 +153,7 @@ function clearSoft() {
       $('#InsertTelephone').val('');
       $('#InsertEmail').val('');
       updating = {isUpdating: false, row: null};
+
      
 }
 
@@ -206,9 +211,9 @@ function validate_email(){
 
 
 
-insertRow('Samuel', '00000000', 'sam@outlook.com');
-insertRow('Jean', '00000000', 'jean.pierre@outlook.com');
-insertRow('Audrey', '00000000', 'audrey.vigneux@outlook.com');
+insertRow('Samuel', '1234567890', 'sam@outlook.com');
+insertRow('Jean', '1234567890', 'jean.pierre@outlook.com');
+insertRow('Audrey', '1234567890', 'audrey.vigneux@outlook.com');
 
 
 let validationProvider = new ValidationProvider("Form-Insert");
