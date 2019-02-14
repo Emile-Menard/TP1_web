@@ -185,3 +185,8 @@ button:hover {
       width: 24px;
       margin: auto;   
 }
+
+.CurrentEdit {
+      background-color: #3385ff !important;
+      color: white;
+}

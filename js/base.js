@@ -1,4 +1,4 @@
-var updating = { isUpdating: false, row: null};
+var updating = { isUpdating: false, row: null, children: null};
 var currentRow = null;
 function insertRow(nom, telephone, courriel) {
       if(nom != "" && telephone != "" && courriel != "") {
@@ -52,8 +52,11 @@ function insertRow(nom, telephone, courriel) {
 
             $(editButton).on('click',  function(e) {
                 let row = $(this).parent().parent();
-                row.css({'backgroundColor':'#3385ff'});
-                row.css({'color':'white'}); 
+                updateData.children = row.parent().children();
+                if(updateData.children != null)
+                    RemoveCurrentEdit();
+                
+                row.addClass('CurrentEdit');
                 updateData(row);
             });
 
@@ -77,6 +80,12 @@ function insertRow(nom, telephone, courriel) {
 
             table.append(row);
       }     
+}
+
+function RemoveCurrentEdit() {
+    for (let index = 0; index <  updateData.children.length; index++) {
+        $(updateData.children[index]).removeClass('CurrentEdit');
+    }
 }
 
 function updateData(row) {
@@ -117,10 +126,18 @@ $("#InsertShowButton").click(function(event) {
 
 $("#ControlRefreshButton").click(function(event) {
     clearInputs();
+    if(updateData.children != null)
+        RemoveCurrentEdit();
+        
+    updateData.children = null;
 });
 
 $("#ControlCancelButton").click(function(event) {
     clearControls();
+    if(updateData.children != null)
+        RemoveCurrentEdit();
+
+    updateData.children = null;
 });
 
 
