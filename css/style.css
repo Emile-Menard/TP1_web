@@ -102,6 +102,7 @@ button:hover {
 #DataTable .table-row:hover {
       background-color: #3385ff;
       transition: background 0.3s;
+      color: white;
 }
 
 .overlay{
