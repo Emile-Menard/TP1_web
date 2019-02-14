@@ -47,6 +47,7 @@ function insertRow(nom, telephone, courriel) {
                 console.log($(this))
                 overlay_.classList.add('show');
                 popup_.classList.remove('invisible');
+                document.getElementById('ContactName').innerHTML = currentRow.children()[0].innerHTML + "?";
                 back.classList.add('disabled');
             });
 

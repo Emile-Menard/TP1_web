@@ -119,9 +119,9 @@ button:hover {
 
 .popup{
       width: 25%;
-      height: 15%;
+      height: 22%;
       min-width: 200px;
-      min-height: 100px;
+      min-height: 150px;
       top: 37.5%;
       left: 37.5%;
       margin-left: -(width/2);
@@ -130,12 +130,11 @@ button:hover {
       z-index: 20;
       background-color: white;
       text-align: center;
-      padding: 20px;
       box-shadow: 25px 20px 100px black;
 }
 
 .btn-popup{
-      width: 50px;
+      width: 75px;
       margin: 20px;
       background-color: lightgrey;
       font-weight: bold;
