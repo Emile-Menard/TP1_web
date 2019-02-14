@@ -52,6 +52,8 @@ function insertRow(nom, telephone, courriel) {
 
             $(editButton).on('click',  function(e) {
                 let row = $(this).parent().parent();
+                row.css({'backgroundColor':'#3385ff'});
+                row.css({'color':'white'}); 
                 updateData(row);
             });
 
@@ -95,6 +97,9 @@ function updateData(row) {
     $('#InsertEmail').val(courriel);
 
     updating = {isUpdating: true, row: row};
+
+    row
+
 }
 
 function createCol(data) {
@@ -146,10 +151,10 @@ $("#Form-Insert").submit(function( event ) {
     if(validationProvider.isValid()) {
         if(updating.isUpdating){
          
-        $(updating.row).children()[0].innerHTML = name;
-        $(updating.row).children()[1].innerHTML = telephone;
-        $(updating.row).children()[2].innerHTML = email;
-        clearControls();
+            $(updating.row).children()[0].innerHTML = name;
+            $(updating.row).children()[1].innerHTML = telephone;
+            $(updating.row).children()[2].innerHTML = email;
+            clearControls();
         }
         else{
             insertRow(name, telephone, email); 
