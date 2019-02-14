@@ -1,5 +1,7 @@
 html {
       font-family: sans-serif;
+      text-shadow: 1.5px 1.5px 2px grey;
+
 }
 
 table {
@@ -32,6 +34,7 @@ button:hover {
 
 #Tableau-Header .table-row {
       background-color: grey;
+      background-image: linear-gradient(to left, #45A29E , #1F2833);
      
 }
 
@@ -49,7 +52,7 @@ button:hover {
 }
 
 #Tableau-Controls .table-row {
-      background-color: lightgrey;
+      background-color: #C5C6C7;
 }
 
 #Tableau-Controls .table-row .table-cell {
@@ -60,6 +63,7 @@ button:hover {
 
 #DataTable {
       width: 800px;
+
 }
 
 #DataTable .table-row {
@@ -70,7 +74,7 @@ button:hover {
 }
 
 #DataTable .table-row:nth-child(2n) {
-      background-color: lightcyan;
+      background-color: #c2efef;
 }
 #DataTable .table-row .table-cell:nth-child(1), #DataTable .table-row .table-cell:nth-child(2) {
       width: 25%;
@@ -90,7 +94,8 @@ button:hover {
 }
 
 #DataTable .table-row:hover {
-      background-color: cyan;
+      background-color: #66FcF1;
+      transition: background 0.3s;
 }
 
 .overlay{
@@ -117,7 +122,7 @@ button:hover {
       margin-right: -(height/2);
       position: absolute;
       z-index: 20;
-      background-color: lightblue;
+      background-color: #c2efef;
       text-align: center;
       padding: 20px;
 }
@@ -154,7 +159,9 @@ button:hover {
 
 .wrapper{
       width: 800px;
-      border: solid 1px grey;
+      box-shadow: 25px 20px 100px black;
+      margin:auto;
+      margin-top: 50px;
 }
 
 .HiddenWrapper {
