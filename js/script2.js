@@ -1,3 +1,5 @@
+var updating = { isUpdating: false, row: null, children: null};
+var currentRow = null;
 var contacts = [];
 var i = 1;
 
@@ -61,6 +63,7 @@ function insertContact(contact){
         let delAcceptBtn = document.getElementById("DeleteAcceptButton");
         let delDenyBtn = document.getElementById("DeleteDenyButton");	
 
+        
 		$(row).on('mouseover',  function(e) {
             $(this).find('button').show();
         });
@@ -69,7 +72,13 @@ function insertContact(contact){
             $(this).find('button').hide();
         });
 
+        $(editButton).attr('title', 'Modifier ' + contact.nom);
+        $(deleteButton).attr('title', 'Effacer ' + contact.nom);
+       
+
         $(deleteButton).on('click',  function(e) {
+            currentRow = $(row);
+            console.log(currentRow)
             overlay_.classList.add('show');
             popup_.classList.add('show');
             document.getElementById('ContactName').innerHTML = row.childNodes[0].innerHTML + "?";
@@ -77,12 +86,13 @@ function insertContact(contact){
         });
 
         $(editButton).on('click',  function(e) {
-            // updateData.children = row.parent().children();
-            // if(updateData.children != null)
-            //     RemoveCurrentEdit();
+            console.log("ok")
+            updateData.children = $(row).parent().children();
+            if(updateData.children != null)
+                removeCurrentEdit();
             
-            // row.addClass('current-edit');
-            // updateData(row);
+             $(row).addClass('current-edit');
+         updateData($(row));
         });
 
 
@@ -91,6 +101,7 @@ function insertContact(contact){
             overlay_.classList.remove('show');
             popup_.classList.remove('show');
             back.classList.remove('disabled'); 
+            currentRow.remove();
             //clearInputs();            
         });
 
@@ -117,6 +128,35 @@ $("#ControlRefreshButton").click(function(event) {
         
     updateData.children = null;
 });
+
+
+function removeCurrentEdit() {
+    for (let index = 0; index <  updateData.children.length; index++) {
+        $(updateData.children[index]).removeClass('CurrentEdit');
+    }
+}
+
+function updateData(row) {
+    let nom = row.children()[0].innerHTML;
+    let telephone = row.children()[1].innerHTML;
+    let courriel = row.children()[2].innerHTML;
+  
+    let controlTab =  $("#Tableau-Controls");
+    if(!controlTab.is(":visible")){
+        controlTab.show();
+        $("#InsertShowButton" ).hide();
+    }
+
+    validationProvider.reset();
+
+    $('#InsertName').val(nom);
+    $('#InsertTelephone').val(telephone);
+    $('#InsertEmail').val(courriel);
+
+    updating = {isUpdating: true, row: row};
+
+}
+
 
 $("#ControlCancelButton").click(function(event) {
     clearInputs();
@@ -156,7 +196,13 @@ function validate_name(){
 
     if (TBX_FirstName.value === "")
         return "Prénom manquant";
-      
+    
+        
+    var letters = /^[A-Za-z]+$/;
+
+    if(!TBX_FirstName.value.match(letters))   
+        return "Le nom doit seulement contenir des lettres"; 
+
     return "";
 }
 
