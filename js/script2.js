@@ -14,6 +14,33 @@ class Contact{
 	}
 }
 
+$("#Form-Insert").submit(function( event ) {
+    var name = $('#InsertName').val();
+    var telephone = $('#InsertTelephone').val();
+    var email = $('#InsertEmail').val();
+      
+    if(validationProvider.isValid()) {
+        if(updating.isUpdating){
+         
+            $(updating.row).children()[0].innerHTML = name;
+            $(updating.row).children()[1].innerHTML = telephone;
+            $(updating.row).children()[2].innerHTML = email;
+            clearInputs();
+            removeCurrentEdit();
+            $("#Tableau-Controls").hide();
+            $("#InsertShowButton").show();
+        }
+        else{
+            insertContact(new Contact(name, telephone, email)); 
+            clearInputs();
+            $("#Tableau-Controls").hide();
+            $("#InsertShowButton").show();
+        }
+     
+    }         
+});
+
+
 function insertContact(contact){
 	if(contact.name != "" && contact.phone != "" && contact.email != "") {
 
@@ -102,7 +129,9 @@ function insertContact(contact){
             popup_.classList.remove('show');
             back.classList.remove('disabled'); 
             currentRow.remove();
-            //clearInputs();            
+            clearInputs(); 
+            $("#Tableau-Controls").hide();
+            $("#InsertShowButton").show();           
         });
 
         $(delDenyBtn).on('click',  function(e) {

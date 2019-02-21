@@ -27,6 +27,10 @@ button:hover {
       background-color: lightgrey;
 }
 
+#DataGrid > div:nth-child(2n) {
+      background-color: lightgray;
+}
+
 .grid-container{
       display: grid;
       grid-template-columns: auto auto auto auto;
