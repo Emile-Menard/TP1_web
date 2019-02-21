@@ -1,11 +1,6 @@
 html {
       font-family: sans-serif;
       text-shadow: 1.5px 1.5px 2px grey;
-
-}
-
-table {
-      border-spacing: 0px;
 }
 
 input {
@@ -13,7 +8,6 @@ input {
       padding: 6px;
       border: 0;
       border-radius: 4px;
-
 }
 
 button{
@@ -31,78 +25,39 @@ button:hover {
       background-color: lightgrey;
 }
 
-
-#Tableau-Header {
-      width: 800px;
-      height: 30px;
-
-}
-
-#Tableau-Header .table-row {
-      background-color: grey;
-      background-image: linear-gradient(to right, #0047b3 ,  #0066ff);
-     
-}
-
-#Tableau-Header .table-row .table-cell {
-      border: 0;
-      padding: 5px;
+.grid-container{
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      padding-top: 5px;
+      padding-bottom: 5px;
       padding-left: 10px;
-      color: white;
-
 }
 
-#Tableau-Controls{
-      width: 800px;
-      height: 30px;
+.grid-container div{
+      width: 200px;
+      margin-right: 20px;
 }
 
-#Tableau-Controls .table-row {
-      background-color: #C5C6C7;
-}
-
-#Tableau-Controls .table-row .table-cell {
-      border: 0;
-      padding: 10px 20px 10px 10px;
+.grid-header {
+      background-image: linear-gradient(to right, #0047b3 ,  #0066ff);
       color: white;
 }
 
-#DataTable {
-      width: 800px;
-
-}
-
-#DataTable .table-row {
-      max-height: 40px;
-}
-#DataTable .table-row .table-cell{
-      height: 40px;
-}
-
-#DataTable .table-row:nth-child(2n) {
+.grid-control{
       background-color: lightgrey;
 }
-#DataTable .table-row .table-cell:nth-child(1), #DataTable .table-row .table-cell:nth-child(2) {
-      width: 25%;
+
+.disabled{
+      pointer-events: none;
+      user-select: none;
 }
 
-#DataTable .table-row .table-cell:nth-child(3) {
-      width: 35%;
-}
-#DataTable .table-row .table-cell:nth-child(4) {
-      width: 15%;
+.show{
+      display: block !important;
 }
 
-
-#DataTable .table-row .table-cell {
-      border: 0;
-      padding: 5px 10px;
-}
-
-#DataTable .table-row:hover {
-      background-color: #3385ff;
-      transition: background 0.3s;
-      color: white;
+.hide{
+      display: none;
 }
 
 .overlay{
@@ -131,39 +86,17 @@ button:hover {
       background-color: white;
       text-align: center;
       box-shadow: 25px 20px 100px black;
+      display: none;
 }
 
-.btn-popup{
+.popup button{
       width: 75px;
       margin: 20px;
       background-color: lightgrey;
       font-weight: bold;
 }
 
-.table{
-      display: table;
-}
 
-.table-row{
-      display: table-row;
-}
-
-.table-cell{
-      display: table-cell;
-}
-
-.disabled{
-      pointer-events: none;
-      user-select: none;
-}
-
-.show{
-      display: block;
-}
-
-.invisible{
-      display: none;
-}
 
 .wrapper{
       width: 800px;
@@ -174,18 +107,23 @@ button:hover {
       overflow: hidden;
 }
 
-.HiddenWrapper {
+.hidden-wrapper {
       height: 300px;
       widows: 100%;
       overflow-y: scroll;
 }
 
-.MarginWrapper {
+.margin-wrapper {
       width: 24px;
       margin: auto;   
 }
 
-.CurrentEdit {
+.current-edit {
       background-color: #3385ff !important;
+      color: white;
+}
+
+#DataGrid div:hover {
+      background-color: #3385ff;
       color: white;
 }

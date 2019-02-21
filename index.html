@@ -12,65 +12,58 @@
       <i class="fa fa-user" style="font-size: 50px; display: inline"></i>
       <h2 style="display: inline">Gestionnaire de contact</h2>
       <div id="Wrapper" class="wrapper">
-            <div id="Tableau-Header" class="table">
-                  <div class="table-row">
-                        <div style="width: 25%" class="table-cell">Nom</div>
-                        <div style="width: 25%" class="table-cell">Téléphone</div>
-                        <div style="width: 35%" class="table-cell">Courriel</div>
-                        <div style="width: 15%" class="table-cell">
-                              <div class="MarginWrapper">
-                                    <button id="InsertShowButton">
-                                          <i class="fa fa-plus" aria-hidden="true"></i>
-                                    </button>
-                              </div>
-                        </div>
+            <div class="grid-container grid-header">
+                  <div>Nom</div>
+                  <div>Téléphone</div>
+                  <div>Courriel</div>
+                  <div class="margin-wrapper">
+                        <button id="InsertShowButton">
+                              <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
                   </div>
             </div>
             <form action="javascript:void(0);" id="Form-Insert">
-                  <div id="Tableau-Controls" style="display: none" class="table">
-                        <div class="table-row">
-                              <div style="width: 25%" class="table-cell">
-                                    <input type="text" name="nom" id="InsertName" placeholder="Nom"></input>
-                              </div>
-                              <div style="width: 25%" class="table-cell">
-                                          <input type="phone" name="telephone" id="InsertTelephone" placeholder="Téléphone"></input>
-                              </div style="width: 35%" class="table-cell">
-                              <div  class="table-cell">
-                                    <input type="email" name="courriel" id="InsertEmail" placeholder="Courriel"></input>
-                              </div>
-                              <div style="width: 15%" class="table-cell">
-                                    <button id="ControlAcceptButton" type="submit">
-                                          <i class="fa fa-check" aria-hidden="true"></i>
-                                    </button>
-                                    <button id="ControlRefreshButton">                      
-                                          <i class="fa fa-refresh" aria-hidden="true"></i>
-                                    </button>
-                                    <button id="ControlCancelButton">                      
-                                          <i class="fa fa-times" aria-hidden="true"></i>
-                                    </button>
-                              </div>
+                  <div id="Tableau-Controls" style="display: none" class="grid-container grid-control">
+                        <div>
+                              <input type="text" name="nom" id="InsertName" placeholder="Nom"></input>
+                        </div>
+                        <div>
+                              <input type="phone" name="telephone" id="InsertTelephone" placeholder="Téléphone"></input>
+                        </div>
+                        <div>
+                              <input type="email" name="courriel" id="InsertEmail" placeholder="Courriel"></input>
+                        </div>
+                        <div>
+                              <button id="ControlAcceptButton" type="submit">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                              </button>
+                              <button id="ControlRefreshButton">                      
+                                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                              </button>
+                              <button id="ControlCancelButton">                      
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                              </button>
                         </div>
                   </div>
             </form>
-
-            <div class="HiddenWrapper">
-                  <div id="DataTable" class="table"></div>      
+            <div class="hidden-wrapper">
+                  <div id="DataGrid"> 
+                  </div>      
             </div>
             
       </div>     
       
       <div id="Overlay" class="overlay"></div>
       
-      <div id="Popup" class="popup invisible">
+      <div id="Popup" class="popup">
             <h2>Attention</h2>
-            Effacer
-            <span id="ContactName"></span>
+            Effacer <span id="ContactName"></span>
             <br>
-            <button id="DeleteAcceptButton" class="btn-popup">Confirmer</button>
-            <button id="DeleteDenyButton" class="btn-popup">Annuler</button>
+            <button id="DeleteAcceptButton">Confirmer</button>
+            <button id="DeleteDenyButton">Annuler</button>
       </div> 
 
       <script src="./js/Validation.js"></script>
-      <script src="./js/base.js"></script>
+      <script src="./js/script2.js"></script>
 </body>
 </html>
