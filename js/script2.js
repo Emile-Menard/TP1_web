@@ -1,8 +1,13 @@
+
 var updating = { isUpdating: false, row: null, children: null};
 var currentRow = null;
+
+//Contient les contacts
 var contacts = [];
+//Index pour identifier les rangées
 var i = 1;
 
+//Objet contact
 class Contact{
 	mName;
 	mPhone;
@@ -14,41 +19,55 @@ class Contact{
 	}
 }
 
+//Formattage des tooltips
+$(function() {
+    $( document ).tooltip({
+        position: {
+            my: "center bottom-20",
+            at: "right+5 top+10",
+            using: function( position, feedback ) {
+                $( this ).css( position );
+                $( "<div>" ).addClass( "arrow" )
+                .addClass( feedback.vertical ).addClass( feedback.horizontal )
+                .appendTo( this );
+            }
+        }
+    });
+});
+
+//Mise-à-jour des données après ajout ou modification de contact
 $("#Form-Insert").submit(function( event ) {
     var name = $('#InsertName').val();
     var telephone = $('#InsertTelephone').val();
     var email = $('#InsertEmail').val();
-      
+
     if(validationProvider.isValid()) {
         if(updating.isUpdating){
-         
             $(updating.row).children()[0].innerHTML = name;
             $(updating.row).children()[1].innerHTML = telephone;
             $(updating.row).children()[2].innerHTML = email;
-            clearInputs();
             removeCurrentEdit();
-            $("#Tableau-Controls").hide();
-            $("#InsertShowButton").show();
         }
         else{
             insertContact(new Contact(name, telephone, email)); 
-            clearInputs();
-            $("#Tableau-Controls").hide();
-            $("#InsertShowButton").show();
         }
-     
+        clearInputs();
+        $("#Tableau-Controls").hide();
+        $("#InsertShowButton").show();
     }         
 });
 
-
+//Insertion de contact dans le tableau
 function insertContact(contact){
 	if(contact.name != "" && contact.phone != "" && contact.email != "") {
 
+        //Ajout du contact à la liste
 		contacts.push(contact);
 		console.log(contacts);
 
 		let grid = $("#DataGrid");
 
+        //Création du grid pour le contact
 		let row = document.createElement("div");
 		row.classList.add('grid-container');
 		row.classList.add("row_" + i++);
@@ -83,6 +102,8 @@ function insertContact(contact){
 		row.append(email);
 		row.append(ctrl);	
 
+
+        //Servira à créer des capteur d'évènements
 		let overlay_ = document.getElementById("Overlay");
         let back = document.getElementById("Wrapper");
         let popup_ = document.getElementById("Popup");
@@ -90,7 +111,7 @@ function insertContact(contact){
         let delAcceptBtn = document.getElementById("DeleteAcceptButton");
         let delDenyBtn = document.getElementById("DeleteDenyButton");	
 
-        
+        //Affichage des boutons modifier et supprimer en hover
 		$(row).on('mouseover',  function(e) {
             $(this).find('button').show();
         });
@@ -99,10 +120,11 @@ function insertContact(contact){
             $(this).find('button').hide();
         });
 
-        $(editButton).attr('title', 'Modifier ' + contact.nom);
-        $(deleteButton).attr('title', 'Effacer ' + contact.nom);
+        //Pour les tooltips sur les boutons modifier et supprimer
+        $(editButton).attr('title', 'Modifier ' + contact.mName);
+        $(deleteButton).attr('title', 'Effacer ' + contact.mName);
        
-
+        //Gestion des évènements pour la suppression et la modification
         $(deleteButton).on('click',  function(e) {
             currentRow = $(row);
             console.log(currentRow)
@@ -118,11 +140,12 @@ function insertContact(contact){
             if(updateData.children != null)
                 removeCurrentEdit();
             
-             $(row).addClass('current-edit');
-         updateData($(row));
+            $(row).addClass('current-edit');
+            updateData($(row));
+
         });
 
-
+        //Gestion du formulaire de confirmation de suppression
         $(delAcceptBtn).on('click',  function(e) {
             console.log(row);
             overlay_.classList.remove('show');
@@ -131,7 +154,7 @@ function insertContact(contact){
             currentRow.remove();
             clearInputs(); 
             $("#Tableau-Controls").hide();
-            $("#InsertShowButton").show();           
+            $("#InsertShowButton").show();     
         });
 
         $(delDenyBtn).on('click',  function(e) {
@@ -140,16 +163,19 @@ function insertContact(contact){
             back.classList.remove('disabled');             
         });
 
+        //Ajout de la rangée au tableau
 		grid.append(row);
 	}
 }
 
+//Gestion de l'évèmement click pour ajout de contact
 $("#InsertShowButton").click(function(event) {
     $("#Tableau-Controls").show();
     $(this).hide();
     validationProvider.reset();
 });
 
+//Gestion de l'évèmement click pour rafraichissement des champs d'ajout ou de modification
 $("#ControlRefreshButton").click(function(event) {
     clearInputs();
     if(updateData.children != null)
@@ -158,6 +184,16 @@ $("#ControlRefreshButton").click(function(event) {
     updateData.children = null;
 });
 
+//Gestion de l'évèmement click pour annulation de modification ou de suppression
+$("#ControlCancelButton").click(function(event) {
+    clearInputs();
+    $("#Tableau-Controls").hide();
+    $("#InsertShowButton" ).show();
+    if(updateData.children != null)
+        removeCurrentEdit();
+
+    updateData.children = null;
+});
 
 function removeCurrentEdit() {
     for (let index = 0; index <  updateData.children.length; index++) {
@@ -186,17 +222,6 @@ function updateData(row) {
 
 }
 
-
-$("#ControlCancelButton").click(function(event) {
-    clearInputs();
-    $("#Tableau-Controls").hide();
-    $("#InsertShowButton" ).show();
-    if(updateData.children != null)
-        removeCurrentEdit();
-
-    updateData.children = null;
-});
-
 function clearInputs() {
     $('#InsertName').val('');
     $('#InsertTelephone').val('');
@@ -210,6 +235,7 @@ function removeCurrentEdit() {
     }
 }
 
+//Méthodes de validation
 function validate_email(){
     let TBX_Email = document.getElementById("InsertEmail");
     let emailRegex = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/;
@@ -246,13 +272,14 @@ function validate_telephone(){
       
     return "";
 }
-
+//Validation provider
 let validationProvider = new ValidationProvider("Form-Insert");
 
 validationProvider.addControl("InsertName", validate_name);
 validationProvider.addControl("InsertEmail", validate_email);
 validationProvider.addControl("InsertTelephone", validate_telephone);
 
+//Ajout de données bidons
 insertContact(new Contact('Samuel', '1234567890', 'sam@outlook.com'));
 insertContact(new Contact('Jean', '1234567890', 'jean.pierre@outlook.com'));
 insertContact(new Contact('Audrey', '1234567890', 'audrey.vigneux@outlook.com'));
