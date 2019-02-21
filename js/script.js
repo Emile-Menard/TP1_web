@@ -1,5 +1,6 @@
 var updating = { isUpdating: false, row: null, children: null};
 var currentRow = null;
+
 function insertRow(nom, telephone, courriel) {
       if(nom != "" && telephone != "" && courriel != "") {
             var table = $('#DataTable');
