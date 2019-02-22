@@ -1,4 +1,5 @@
 
+// Valeurs pour savoir si grille en mode insertion ou en mode ajout
 var updating = { isUpdating: false, row: null, children: null};
 var currentRow = null;
 
@@ -23,8 +24,8 @@ class Contact{
 $(function() {
     $( document ).tooltip({
         position: {
-            my: "center bottom-20",
-            at: "right+5 top+10",
+            my: "center center",
+            at: "left-80 center",
             using: function( position, feedback ) {
                 $( this ).css( position );
                 $( "<div>" ).addClass( "arrow" )
@@ -46,6 +47,12 @@ $("#Form-Insert").submit(function( event ) {
             $(updating.row).children()[0].innerHTML = name;
             $(updating.row).children()[1].innerHTML = telephone;
             $(updating.row).children()[2].innerHTML = email;
+
+            let buttons = $(updating.row).children().find('button');
+
+            $(buttons[0]).attr('title', 'Modifier ' + name);
+            $(buttons[1]).attr('title', 'Effacer ' + name);
+
             removeCurrentEdit();
         }
         else{
@@ -135,7 +142,6 @@ function insertContact(contact){
         });
 
         $(editButton).on('click',  function(e) {
-            console.log("ok")
             updateData.children = $(row).parent().children();
             if(updateData.children != null)
                 removeCurrentEdit();
@@ -147,7 +153,6 @@ function insertContact(contact){
 
         //Gestion du formulaire de confirmation de suppression
         $(delAcceptBtn).on('click',  function(e) {
-            console.log(row);
             overlay_.classList.remove('show');
             popup_.classList.remove('show');
             back.classList.remove('disabled'); 
@@ -195,12 +200,8 @@ $("#ControlCancelButton").click(function(event) {
     updateData.children = null;
 });
 
-function removeCurrentEdit() {
-    for (let index = 0; index <  updateData.children.length; index++) {
-        $(updateData.children[index]).removeClass('CurrentEdit');
-    }
-}
 
+// Mise a jour d'une row
 function updateData(row) {
     let nom = row.children()[0].innerHTML;
     let telephone = row.children()[1].innerHTML;
@@ -222,13 +223,18 @@ function updateData(row) {
 
 }
 
+// Vide les input pour insert et mise a jour
 function clearInputs() {
     $('#InsertName').val('');
     $('#InsertTelephone').val('');
     $('#InsertEmail').val('');
+
+    validationProvider.reset();
+
     updating = {isUpdating: false, row: null};
 }
 
+// Supression de la couleur d'une rangée sélectionnée apres la modification
 function removeCurrentEdit() {
     for (let index = 0; index <  updateData.children.length; index++) {
         $(updateData.children[index]).removeClass('current-edit');
@@ -246,6 +252,7 @@ function validate_email(){
     return "";
 }
 
+// validation d'une nom
 function validate_name(){
     let TBX_FirstName = document.getElementById("InsertName");
 
@@ -261,6 +268,7 @@ function validate_name(){
     return "";
 }
 
+// Validation d'un téléphone
 function validate_telephone(){
     let TBX_Phone = document.getElementById("InsertTelephone");
 
@@ -272,8 +280,9 @@ function validate_telephone(){
       
     return "";
 }
-//Validation provider
-let validationProvider = new ValidationProvider("Form-Insert");
+
+
+var validationProvider = new ValidationProvider("Form-Insert");
 
 validationProvider.addControl("InsertName", validate_name);
 validationProvider.addControl("InsertEmail", validate_email);

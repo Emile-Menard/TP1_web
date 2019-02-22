@@ -1,8 +1,6 @@
-
-
 html {
       font-family: sans-serif;
-      text-shadow: 1.5px 1.5px 2px grey;
+      text-shadow: 1.5px 1.5px 2px rgba(207, 207, 207, 0);
 }
 
 input {
@@ -29,6 +27,10 @@ button:hover {
 
 #DataGrid > div:nth-child(2n) {
       background-color: lightgray;
+}
+
+#DataGrid {
+      overflow-x: hidden;
 }
 
 .grid-container{
@@ -110,9 +112,17 @@ button:hover {
 
 
 .wrapper{
-      width: 800px;
+      max-width: 800px;
       box-shadow: 25px 20px 100px black;
       border-radius: 7px;
+      margin:auto;
+      margin-top: 5px;
+      overflow: hidden;
+}
+
+.title{
+      max-width: 800px;
+      color: #383838;
       margin:auto;
       margin-top: 50px;
       overflow: hidden;
